@@ -2,30 +2,30 @@
 
 <div>
   <label for="passwordLength">Enter length</label>
-  <input type="text">
+  <input [value]="length" (input)="onSetLength($event)" type="text">
 </div>
 
 <div>
   <label for="passwordLength">Use Numbers</label>
-  <input type="checkbox">
+  <input [value]="includeNumbers" (change)="onChangeIncludeNumbers()" type="checkbox">
 </div>
 
 <div>
   <label for="passwordLength">Use Letters</label>
-  <input type="checkbox">
+  <input [value]="includeStrings" (change)="onChangeIncludeStrings()" type="checkbox">
 </div>
 
 <div>
   <label for="passwordLength">Use Symbols</label>
-  <input type="checkbox">
+  <input [value]="includeSymbols" (change)="onChangeIncludeSymbols()" type="checkbox">
 </div>
 
 <div>
-  <button> Generate </button>
+  <button (click)="onGenerate()"> Generate </button>
 </div>
 
 
 <div>
   <label for="passwordLength">Your Password</label>
-  <input type="text">
+  <input [value]="this.generatedPw" type="text">
 </div>
