@@ -21,7 +21,7 @@
 </div>
 
 <div>
-  <button (click)="onGenerate()"> Generate </button>
+  <button [disabled]="!(length && (includeStrings || includeNumbers || includeSymbols))" (click)="onGenerate()"> Generate </button>
 </div>
 
 
