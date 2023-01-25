@@ -1,31 +1,48 @@
-<h1>Password Generator </h1>
+<div class="container">
+  <div class="box column is-one-third">
+    <h1 class="title has-text-centered">Password Generator </h1>
 
-<div>
-  <label for="passwordLength">Enter length</label>
-  <input [value]="length" (input)="onSetLength($event)" type="text">
+    <div class="field">
+      <label for="passwordLength">Enter length</label>
+      <input class="input" [value]="length" (input)="onSetLength($event)" type="text">
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="checkbox" for="passwordLength">
+          <input [value]="includeNumbers" (change)="onChangeIncludeNumbers()" type="checkbox">
+          Use Numbers
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="checkbox" for="passwordLength">
+          <input [value]="includeStrings" (change)="onChangeIncludeStrings()" type="checkbox">
+          Use Letters
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="checkbox" for="passwordLength">
+          <input [value]="includeSymbols" (change)="onChangeIncludeSymbols()" type="checkbox">
+          Use Symbols
+        </label>
+      </div>
+    </div>
+
+    <div>
+      <button class="button is-link is-fullwidth" [disabled]="!(length && (includeStrings || includeNumbers || includeSymbols))" (click)="onGenerate()"> Generate </button>
+    </div>
+
+
+    <div *ngIf="generatedPw" class="box">
+      <label for="passwordLength">Your Password</label>
+      <input class="input" [value]="this.generatedPw" type="text">
+    </div>
+  </div>
 </div>
 
-<div>
-  <label for="passwordLength">Use Numbers</label>
-  <input [value]="includeNumbers" (change)="onChangeIncludeNumbers()" type="checkbox">
-</div>
-
-<div>
-  <label for="passwordLength">Use Letters</label>
-  <input [value]="includeStrings" (change)="onChangeIncludeStrings()" type="checkbox">
-</div>
-
-<div>
-  <label for="passwordLength">Use Symbols</label>
-  <input [value]="includeSymbols" (change)="onChangeIncludeSymbols()" type="checkbox">
-</div>
-
-<div>
-  <button [disabled]="!(length && (includeStrings || includeNumbers || includeSymbols))" (click)="onGenerate()"> Generate </button>
-</div>
-
-
-<div>
-  <label for="passwordLength">Your Password</label>
-  <input [value]="this.generatedPw" type="text">
-</div>
